@@ -583,6 +583,9 @@ pub(crate) fn expression(expr: &Expr, checker: &mut Checker) {
                     flake8_bugbear::rules::zip_without_explicit_strict(checker, call);
                 }
             }
+            if checker.enabled(Rule::ReplaceFStringWithRepr) {
+                flake8_bugbear::rules::replace_f_string_with_repr(checker, expr);
+            }
             if checker.enabled(Rule::NoExplicitStacklevel) {
                 flake8_bugbear::rules::no_explicit_stacklevel(checker, call);
             }
